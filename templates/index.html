@@ -8,9 +8,10 @@
 </head>
 <body>
     <h1>Welcome to the Simple Blog!</h1>
+    <a href="{{ url_for('add') }}">Add post</a>
     {% for blog_post in posts %}
     <div class="post">
-        <h2>{{ blog_post["title"] }}</h2>
+        <h2>{{ blog_post["title"] }}</h2><a href="{{ url_for('delete', post_id=blog_post['id']) }}">Delete post</a>
         <p><em>Written by {{ blog_post["author"] }}</em></p>
         <p>{{ blog_post["content"] }}</p>
     </div>

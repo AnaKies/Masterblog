@@ -1,32 +1,14 @@
 [
     {
-        "id": 414400,
+        "id": "dbd1e3d1-c8d6-41d9-bc42-1458fdbf64b0",
+        "author": "Silvia",
+        "title": "Stones",
+        "content": "I build the stones sculptures."
+    },
+    {
+        "id": "699f4cce-a2d9-4070-a1c3-0f9b704189a1",
         "author": "Alice",
         "title": "cats",
         "content": "they are pretty."
-    },
-    {
-        "id": 499061,
-        "author": "Bob",
-        "title": "Wood",
-        "content": "I like to prepare wood for my oven."
-    },
-    {
-        "id": 429349,
-        "author": "Semen",
-        "title": "Bikes",
-        "content": "I did a bike trip."
-    },
-    {
-        "id": 277072,
-        "author": "Silvia",
-        "title": "Spain culture",
-        "content": "I will tell you about beautiful cities of Spain."
-    },
-    {
-        "id": "9ce7de23-4bfa-4161-a290-3f0ab2d76d39",
-        "author": "Peter",
-        "title": "Stones",
-        "content": "I build the stones sculptures."
     }
 ]

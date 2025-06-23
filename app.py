@@ -1,3 +1,5 @@
+from importlib.metadata import pass_none
+
 from flask import Flask, render_template, request, redirect, url_for
 import json_manager.json_handler as json_handler
 import random
@@ -13,9 +15,9 @@ def add():
     """
     try:
         if request.method == 'POST':
-            user_name = request.form['user_name']
-            post_title = request.form['post_title']
-            post_content = request.form['post_content']
+            user_name = request.form.get('user_name')
+            post_title = request.form.get('post_title')
+            post_content = request.form.get('post_content')
             user_id = str(uuid.uuid4())
             new_post = {'id': user_id, 'author': user_name, 'title': post_title, 'content': post_content}
             data = json_handler.read_json()
@@ -31,6 +33,35 @@ def add():
         print(f"Error adding blog post data: {error}")
         return []
 
+
+@app.route('/delete/<string:post_id>')
+def delete(post_id):
+    """
+    Deletes a blog post by a number in the query.
+    """
+    try:
+        blog_posts = json_handler.read_json()
+
+        if not blog_posts:
+            raise Exception('Nothing to delete')
+
+        post_found = False
+
+        for i, post in enumerate(blog_posts):
+            if post['id'] == post_id:
+                blog_posts.pop(i)
+                post_found = True
+                break;
+
+        if not post_found:
+            print(f"Warning: post with id {post_id} doesn't exist in the storage.")
+
+        json_handler.write_json(blog_posts)
+
+        return render_template('index.html', posts=blog_posts)
+    except Exception as error:
+        print(f"Error deleting blog post data: {error}")
+        return []
 
 
 @app.route('/')
