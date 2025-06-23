@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, redirect, url_for
-import json_manager.json_handler as json_handler
 import uuid
 
+from flask import Flask, render_template, request, redirect, url_for
+
+import helpers.helper as helper
+import json_manager.json_handler as json_handler
 
 app = Flask(__name__)
+
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
@@ -12,24 +15,26 @@ def add():
     """
     try:
         if request.method == 'POST':
-            user_name = request.form.get('user_name')
-            post_title = request.form.get('post_title')
-            post_content = request.form.get('post_content')
+            user_name, post_title, post_content = helper.get_post_data_from_the_form()
             user_id = str(uuid.uuid4())
+
             new_post = {'id': user_id,
                         'author': user_name,
                         'title': post_title,
                         'content': post_content,
                         'likes': 0}
+
             data = json_handler.read_json()
             if not data:
                 data = []
+
             data.append(new_post)
             json_handler.write_json(data)
 
             return redirect(url_for('index'))
         # case for GET request
         return render_template('add.html')
+
     except Exception as error:
         print(f"Error adding blog post data: {error}")
         return []
@@ -46,20 +51,12 @@ def delete(post_id):
         if not blog_posts:
             return 'Nothing to delete', 404
 
-        post_to_delete_is_found = False
-
-        for i, post in enumerate(blog_posts):
-            if post['id'] == post_id:
-                blog_posts.pop(i)
-                post_to_delete_is_found = True
-                break
-
-        if not post_to_delete_is_found:
-            return f"Warning: post with id {post_id} doesn't exist in the storage.", 404
-
+        post_index = helper.find_post(blog_posts, post_id)
+        blog_posts.pop(post_index)
         json_handler.write_json(blog_posts)
 
         return render_template('index.html', posts=blog_posts)
+
     except Exception as error:
         print(f"Error deleting blog post data: {error}")
         return []
@@ -76,30 +73,23 @@ def update(post_id):
         if not blog_posts:
             return 'Nothing to update', 404
 
-        post_to_update = None
-        post_number = 0
-        for i, post in enumerate(blog_posts):
-            if post.get('id') == post_id:
-                post_to_update = post
-                post_number = i
-                break
-
-        if not post_to_update:
-            print(f"Warning: post with id {post_id} doesn't exist in the storage.")
+        post_index = helper.find_post(blog_posts, post_id)
+        post_to_update = blog_posts[post_index]
 
         if request.method == 'POST':
-            user_name = request.form.get('user_name')
-            post_title = request.form.get('post_title')
-            post_content = request.form.get('post_content')
+            (user_name,
+             post_title,
+             post_content) = helper.get_post_data_from_the_form()
 
-            blog_posts[post_number]['author'] = user_name
-            blog_posts[post_number]['title'] = post_title
-            blog_posts[post_number]['content'] = post_content
+            blog_posts[post_index]['author'] = user_name
+            blog_posts[post_index]['title'] = post_title
+            blog_posts[post_index]['content'] = post_content
 
             json_handler.write_json(blog_posts)
 
             return redirect(url_for('index'))
         return render_template('update.html', post=post_to_update)
+
     except Exception as error:
         print(f"Error updating blog post data: {error}")
         return []
@@ -116,18 +106,8 @@ def like(post_id):
         if not blog_posts:
             return 'Nothing to update', 404
 
-        post_to_like = None
-        post_number = 0
-        for i, post in enumerate(blog_posts):
-            if post.get('id') == post_id:
-                post_to_like = post
-                post_number = i
-                break
-
-        if not post_to_like:
-            print(f"Warning: post with id {post_id} doesn't exist in the storage.")
-
-        blog_posts[post_number]['likes'] += 1
+        post_index = helper.find_post(blog_posts, post_id)
+        blog_posts[post_index]['likes'] += 1
         json_handler.write_json(blog_posts)
 
         return redirect(url_for('index'))
@@ -139,9 +119,14 @@ def like(post_id):
 
 @app.route('/')
 def index():
+    """
+    Main page, that shows all the blog posts.
+    """
     blog_posts = json_handler.read_json()
+
     if not blog_posts:
         blog_posts = []
+
     return render_template('index.html', posts=blog_posts)
 
 
