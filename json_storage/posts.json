@@ -10,5 +10,11 @@
         "author": "Bob",
         "title": "Wood",
         "content": "I like to prepare wood for my oven."
+    },
+    {
+        "id": 429349,
+        "author": "Semen",
+        "title": "Bikes",
+        "content": "I did a bike trip."
     }
 ]

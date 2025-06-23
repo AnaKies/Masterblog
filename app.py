@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import json_manager.json_handler as json_handler
 import random
 
@@ -23,12 +23,9 @@ def add():
             data.append(new_post)
             json_handler.write_json(data)
 
-            return render_template('add.html', data_submited=True,
-                                   user_name=user_name,
-                                   post_title=post_title,
-                                   post_content=post_content)
+            return redirect(url_for('index'))
         # case for GET request
-        return render_template('add.html', data_submited=False)
+        return render_template('add.html')
     except Exception as error:
         print(f"Error adding blog post data: {error}")
         return []
