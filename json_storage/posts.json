@@ -3,24 +3,14 @@
         "id": "dbd1e3d1-c8d6-41d9-bc42-1458fdbf64b0",
         "author": "Silvia-Maria",
         "title": "Stones in the garden",
-        "content": "I build the stones sculptures. I am a designer."
+        "content": "I build the stones sculptures. I am a designer.",
+        "likes": 5
     },
     {
         "id": "5cdfc2aa-62f1-4e7a-bfbc-abdd14074574",
-        "author": "Semen Semenytsch",
+        "author": "Viktor",
         "title": "Cats in the wild nature",
-        "content": "They are pretty and dangerous!"
-    },
-    {
-        "id": "bf1901da-d974-47e4-be92-13577f1c1b1f",
-        "author": "Peter",
-        "title": "Wood",
-        "content": "I like to prepare wood for my oven."
-    },
-    {
-        "id": "bfeccaa5-9323-42a3-9b92-94385e51df25",
-        "author": "Bob",
-        "title": "Wood",
-        "content": "Long text here!"
+        "content": "They are pretty and dangerous!",
+        "likes": 59
     }
 ]

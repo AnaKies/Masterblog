@@ -42,16 +42,16 @@ def delete(post_id):
         if not blog_posts:
             return 'Nothing to delete', 404
 
-        post_found = False
+        post_to_delete_is_found = False
 
         for i, post in enumerate(blog_posts):
             if post['id'] == post_id:
                 blog_posts.pop(i)
-                post_found = True
+                post_to_delete_is_found = True
                 break
 
-        if not post_found:
-            print(f"Warning: post with id {post_id} doesn't exist in the storage.")
+        if not post_to_delete_is_found:
+            return f"Warning: post with id {post_id} doesn't exist in the storage.", 404
 
         json_handler.write_json(blog_posts)
 
@@ -63,6 +63,9 @@ def delete(post_id):
 
 @app.route('/update/<string:post_id>', methods=['GET', 'POST'])
 def update(post_id):
+    """
+    Updates a blog post by UUID.
+    """
     try:
         blog_posts = json_handler.read_json()
 
@@ -98,12 +101,52 @@ def update(post_id):
         return []
 
 
+@app.route('/like/<string:post_id>')
+def like(post_id):
+    """
+    Likes a blog post by UUID.
+    """
+    try:
+        blog_posts = json_handler.read_json()
+
+        if not blog_posts:
+            return 'Nothing to update', 404
+
+        post_to_like = None
+        post_number = 0
+        for i, post in enumerate(blog_posts):
+            if post.get('id') == post_id:
+                post_to_like = post
+                post_number = i
+                break
+
+        if not post_to_like:
+            print(f"Warning: post with id {post_id} doesn't exist in the storage.")
+
+        blog_posts[post_number]['likes'] += 1
+        json_handler.write_json(blog_posts)
+
+        return redirect(url_for('index'))
+
+    except Exception as error:
+        print(f"Error updating blog post data: {error}")
+        return []
+
+
 @app.route('/')
 def index():
     blog_posts = json_handler.read_json()
     if not blog_posts:
         blog_posts = []
     return render_template('index.html', posts=blog_posts)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """
+    Displays a 404 error page with an explanation of the error.
+    """
+    return render_template('404.html', error_message=str(error)), 404
 
 
 if __name__ == '__main__':

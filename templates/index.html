@@ -17,10 +17,14 @@
             <h2>{{ blog_post["title"] }}</h2>
             <div>
                 <a class="button_delete" href="{{ url_for('delete', post_id=blog_post['id']) }}">Delete post</a>
-                <a  class="button_update" href="{{ url_for('update', post_id=blog_post['id']) }}">Update post</a>
+                <a class="button_update" href="{{ url_for('update', post_id=blog_post['id']) }}">Update post</a>
             </div>
         </div>
-        <p><em>Written by {{ blog_post["author"] }}</em></p>
+        <div>
+            <p><em>Written by {{ blog_post["author"] }}</em></p>
+            <a class="button_like" href="{{ url_for('like', post_id=blog_post['id']) }}">Like post</a>
+            <p>{{ blog_post["likes"] }}</p>
+        </div>
         <p>{{ blog_post["content"] }}</p>
     </div>
     {% endfor %}
