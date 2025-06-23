@@ -12,5 +12,12 @@
         "title": "Cats in the wild nature",
         "content": "They are pretty and dangerous!",
         "likes": 59
+    },
+    {
+        "id": "8a3a263f-6254-4696-bec5-bdb2fbdfa8ae",
+        "author": "Alice",
+        "title": "Bikes",
+        "content": "I like travel by bike in the foreign countries.",
+        "likes": 1
     }
 ]

@@ -16,7 +16,11 @@ def add():
             post_title = request.form.get('post_title')
             post_content = request.form.get('post_content')
             user_id = str(uuid.uuid4())
-            new_post = {'id': user_id, 'author': user_name, 'title': post_title, 'content': post_content}
+            new_post = {'id': user_id,
+                        'author': user_name,
+                        'title': post_title,
+                        'content': post_content,
+                        'likes': 0}
             data = json_handler.read_json()
             if not data:
                 data = []

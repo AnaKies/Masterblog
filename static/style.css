@@ -18,7 +18,7 @@ textarea, input {
     min-width: 60%; /* approx. 60 % from the display */
 }
 
-a, .button_ok {
+.button_add, .button_ok, .button_delete, .button_update {
     font-size: 16px;
     display: inline-block;
     text-decoration: none;
@@ -56,6 +56,11 @@ a, .button_ok {
     background-color: rgba(216, 140, 2, 0.37);
 }
 
+.button_like {
+    color: #6c3404;
+    text-decoration: none;
+}
+
 .post {
     padding: 20px;
     margin-bottom: 20px;
@@ -78,4 +83,14 @@ textarea, input, .post {
 .post_header {
     display: flex;
     justify-content: space-between;
+}
+
+.container_author_and_likes, .likes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.likes {
+    width: 100px;
 }

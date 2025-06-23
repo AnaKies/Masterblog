@@ -20,10 +20,12 @@
                 <a class="button_update" href="{{ url_for('update', post_id=blog_post['id']) }}">Update post</a>
             </div>
         </div>
-        <div>
+        <div class="container_author_and_likes">
             <p><em>Written by {{ blog_post["author"] }}</em></p>
-            <a class="button_like" href="{{ url_for('like', post_id=blog_post['id']) }}">Like post</a>
-            <p>{{ blog_post["likes"] }}</p>
+            <div class="likes">
+                <a class="button_like" href="{{ url_for('like', post_id=blog_post['id']) }}">Like post</a>
+                <p>{{ blog_post["likes"] }}</p>
+            </div>
         </div>
         <p>{{ blog_post["content"] }}</p>
     </div>
