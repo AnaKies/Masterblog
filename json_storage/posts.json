@@ -16,5 +16,17 @@
         "author": "Semen",
         "title": "Bikes",
         "content": "I did a bike trip."
+    },
+    {
+        "id": 277072,
+        "author": "Silvia",
+        "title": "Spain culture",
+        "content": "I will tell you about beautiful cities of Spain."
+    },
+    {
+        "id": "9ce7de23-4bfa-4161-a290-3f0ab2d76d39",
+        "author": "Peter",
+        "title": "Stones",
+        "content": "I build the stones sculptures."
     }
 ]

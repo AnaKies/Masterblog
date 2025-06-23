@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import json_manager.json_handler as json_handler
 import random
+import uuid
 
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ def add():
             user_name = request.form['user_name']
             post_title = request.form['post_title']
             post_content = request.form['post_content']
-            user_id = random.randint(100000, 999999)
+            user_id = str(uuid.uuid4())
             new_post = {'id': user_id, 'author': user_name, 'title': post_title, 'content': post_content}
             data = json_handler.read_json()
             if not data:
