@@ -9,7 +9,7 @@
 <body>
     <h1>Update blog post</h1>
     <div class="post">
-        <form action="/update" method="POST">
+        <form action="/update/{{ post['id'] }}" method="POST">
             <h2><label>Enter new name:</label></h2>
             <p><input type="text" id="user_name_id" name="user_name" value="{{ post['author'] }}" required></p>
             <h2><label>Enter the new title of your post:</label></h2>

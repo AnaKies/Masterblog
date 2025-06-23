@@ -40,7 +40,7 @@ def delete(post_id):
         blog_posts = json_handler.read_json()
 
         if not blog_posts:
-            raise Exception('Nothing to delete')
+            return 'Nothing to delete', 404
 
         post_found = False
 
@@ -67,19 +67,30 @@ def update(post_id):
         blog_posts = json_handler.read_json()
 
         if not blog_posts:
-            raise Exception('Nothing to update')
+            return 'Nothing to update', 404
 
         post_to_update = None
-        for post in blog_posts:
+        post_number = 0
+        for i, post in enumerate(blog_posts):
             if post.get('id') == post_id:
                 post_to_update = post
-                break;
+                post_number = i
+                break
 
         if not post_to_update:
             print(f"Warning: post with id {post_id} doesn't exist in the storage.")
 
         if request.method == 'POST':
-            pass
+            user_name = request.form.get('user_name')
+            post_title = request.form.get('post_title')
+            post_content = request.form.get('post_content')
+
+            blog_posts[post_number]['author'] = user_name
+            blog_posts[post_number]['title'] = post_title
+            blog_posts[post_number]['content'] = post_content
+
+            json_handler.write_json(blog_posts)
+
             return redirect(url_for('index'))
         return render_template('update.html', post=post_to_update)
     except Exception as error:
