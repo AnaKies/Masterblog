@@ -8,12 +8,17 @@
 </head>
 <body>
     <h1>Welcome to the Simple Blog!</h1>
-    <a href="{{ url_for('add') }}">Add post</a>
+    <div class="add_button_container">
+        <a class="button_add" href="{{ url_for('add') }}">Add post</a>
+    </div>
     {% for blog_post in posts %}
     <div class="post">
         <div class="post_header">
             <h2>{{ blog_post["title"] }}</h2>
-            <a href="{{ url_for('delete', post_id=blog_post['id']) }}">Delete post</a>
+            <div>
+                <a class="button_delete" href="{{ url_for('delete', post_id=blog_post['id']) }}">Delete post</a>
+                <a  class="button_update" href="{{ url_for('delete', post_id=blog_post['id']) }}">Update post</a>
+            </div>
         </div>
         <p><em>Written by {{ blog_post["author"] }}</em></p>
         <p>{{ blog_post["content"] }}</p>

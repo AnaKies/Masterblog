@@ -21,13 +21,9 @@ textarea, input {
 a, .button_ok {
     font-size: 16px;
     display: inline-block;
-    margin-bottom: 20px;
-    margin-right: 20px;
     text-decoration: none;
     padding: 6px 10px;
     border-radius: 6px;
-    color: #3A7734;
-    background-color: #A5D6D9;
 }
 
 .button_ok {
@@ -37,9 +33,27 @@ a, .button_ok {
     text-align: center;
 }
 
-.post_header a {
+.button_add {
+    color: #3A7734;
+    background-color: #A5D6D9;
+    min-width: 190px;
+    text-align: center;
+}
+/* alignment of the button is possible only inside a container */
+.add_button_container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.button_delete {
     color: #C00;
     background-color: #F8D7DA;
+}
+
+.button_update {
+    color: #6c3404;
+    background-color: rgba(216, 140, 2, 0.37);
 }
 
 .post {
