@@ -10,7 +10,15 @@ h1 {
     color: #4F4F4F;
 }
 
-a {
+textarea, input {
+    min-height: 25px;
+}
+
+textarea, input {
+    min-width: 60%; /* approx. 60 % from the display */
+}
+
+a, .button_ok {
     font-size: 16px;
     display: inline-block;
     margin-bottom: 20px;
@@ -22,16 +30,26 @@ a {
     background-color: #A5D6D9;
 }
 
+.button_ok {
+    border: none;
+    outline: none;
+    min-width: 100px;
+    text-align: center;
+}
+
 .post_header a {
     color: #C00;
     background-color: #F8D7DA;
 }
 
 .post {
-    background-color: #FFF;
-    border: 1px solid #DDD;
     padding: 20px;
     margin-bottom: 20px;
+}
+
+textarea, input, .post {
+    background-color: #FFF;
+    border: 1px solid #DDD;
     border-radius: 8px;
 }
 

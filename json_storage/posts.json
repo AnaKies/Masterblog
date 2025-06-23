@@ -6,9 +6,21 @@
         "content": "I build the stones sculptures."
     },
     {
-        "id": "a9f69a98-8a05-421b-9e3a-760d9acab8a0",
+        "id": "5cdfc2aa-62f1-4e7a-bfbc-abdd14074574",
+        "author": "Semen",
+        "title": "cats",
+        "content": "they are pretty."
+    },
+    {
+        "id": "bf1901da-d974-47e4-be92-13577f1c1b1f",
+        "author": "Peter",
+        "title": "Wood",
+        "content": "I like to prepare wood for my oven."
+    },
+    {
+        "id": "bfeccaa5-9323-42a3-9b92-94385e51df25",
         "author": "Bob",
-        "title": "Bikes",
-        "content": "I did a bike trip."
+        "title": "Wood",
+        "content": "Long text here!"
     }
 ]

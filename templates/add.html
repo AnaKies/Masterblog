@@ -10,13 +10,13 @@
     <h1>New blog post</h1>
     <div class="post">
         <form action="/add" method="POST">
-            <h2><label>Enter your name:</label></h2></br>
-            <p><input type="text" id="user_name_id" name="user_name" required></p></br>
-            <h2><label>Enter the title of your post:</label></h2></br>
-            <p><input type="text" id="post_title_id" name="post_title"></p></br>
-            <h2><label>Enter the content:</label></br></h2>
-            <p><input type="text" id="post_content_id" name="post_content"></p></br>
-            <p><input type="submit" value="Ok"></p>
+            <h2><label>Enter your name:</label></h2>
+            <p><input type="text" id="user_name_id" name="user_name" required></p>
+            <h2><label>Enter the title of your post:</label></h2>
+            <p><input type="text" id="post_title_id" name="post_title" required></p>
+            <h2><label>Enter the content:</label></h2>
+            <p><textarea id="post_content_id" name="post_content" required></textarea></p>
+            <p><input type="submit" value="Ok" class="button_ok"></p>
         </form>
     </div>
 </body>
