@@ -33,7 +33,7 @@ a, .button_ok {
     text-align: center;
 }
 
-.button_add {
+.button_add, .button_ok {
     color: #3A7734;
     background-color: #A5D6D9;
     min-width: 190px;

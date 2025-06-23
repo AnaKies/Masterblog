@@ -17,7 +17,7 @@
             <h2>{{ blog_post["title"] }}</h2>
             <div>
                 <a class="button_delete" href="{{ url_for('delete', post_id=blog_post['id']) }}">Delete post</a>
-                <a  class="button_update" href="{{ url_for('delete', post_id=blog_post['id']) }}">Update post</a>
+                <a  class="button_update" href="{{ url_for('update', post_id=blog_post['id']) }}">Update post</a>
             </div>
         </div>
         <p><em>Written by {{ blog_post["author"] }}</em></p>

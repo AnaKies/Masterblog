@@ -61,6 +61,32 @@ def delete(post_id):
         return []
 
 
+@app.route('/update/<string:post_id>', methods=['GET', 'POST'])
+def update(post_id):
+    try:
+        blog_posts = json_handler.read_json()
+
+        if not blog_posts:
+            raise Exception('Nothing to update')
+
+        post_to_update = None
+        for post in blog_posts:
+            if post.get('id') == post_id:
+                post_to_update = post
+                break;
+
+        if not post_to_update:
+            print(f"Warning: post with id {post_id} doesn't exist in the storage.")
+
+        if request.method == 'POST':
+            pass
+            return redirect(url_for('index'))
+        return render_template('update.html', post=post_to_update)
+    except Exception as error:
+        print(f"Error updating blog post data: {error}")
+        return []
+
+
 @app.route('/')
 def index():
     blog_posts = json_handler.read_json()
