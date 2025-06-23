@@ -1,8 +1,5 @@
-from importlib.metadata import pass_none
-
 from flask import Flask, render_template, request, redirect, url_for
 import json_manager.json_handler as json_handler
-import random
 import uuid
 
 
@@ -37,7 +34,7 @@ def add():
 @app.route('/delete/<string:post_id>')
 def delete(post_id):
     """
-    Deletes a blog post by a number in the query.
+    Deletes a blog post by UUID.
     """
     try:
         blog_posts = json_handler.read_json()
@@ -51,7 +48,7 @@ def delete(post_id):
             if post['id'] == post_id:
                 blog_posts.pop(i)
                 post_found = True
-                break;
+                break
 
         if not post_found:
             print(f"Warning: post with id {post_id} doesn't exist in the storage.")

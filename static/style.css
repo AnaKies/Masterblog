@@ -15,6 +15,16 @@ a {
     display: inline-block;
     margin-bottom: 20px;
     margin-right: 20px;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #3A7734;
+    background-color: #A5D6D9;
+}
+
+.post_header a {
+    color: #C00;
+    background-color: #F8D7DA;
 }
 
 .post {
@@ -31,4 +41,9 @@ a {
 
 .post p {
     margin: 10px 0;
+}
+
+.post_header {
+    display: flex;
+    justify-content: space-between;
 }
