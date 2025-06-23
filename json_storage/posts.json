@@ -3,21 +3,21 @@
         "id": "5cdfc2aa-62f1-4e7a-bfbc-abdd14074574",
         "author": "Viktor",
         "title": "Cats in the wild nature",
-        "content": "They are pretty and dangerous!",
+        "content": "They are pretty and dangerous! Miau.",
         "likes": 60
     },
     {
-        "id": "aa7e9a0e-36da-4c26-af43-14755afca727",
-        "author": "Semen",
-        "title": "Oldtimers",
-        "content": "All about the historical cars up to 1970 and more!",
-        "likes": 1
+        "id": "a60a75f5-ffde-47b8-a369-acc08be71cf0",
+        "author": "Alice",
+        "title": "Wood",
+        "content": "How to prepare wood and survive in the winter.",
+        "likes": 5
     },
     {
-        "id": "8ca07cf3-27fe-4649-a62a-18096ed11c9a",
-        "author": "Peter",
-        "title": "Bikes",
-        "content": "Bikes in my live!",
-        "likes": 0
+        "id": "4ed93f03-1486-461f-8160-05864d6b769e",
+        "author": "Silvia-Maria",
+        "title": "Stones",
+        "content": "Design of the stone sculptures for your garden.",
+        "likes": 1
     }
 ]

@@ -55,7 +55,8 @@ def delete(post_id):
         blog_posts.pop(post_index)
         json_handler.write_json(blog_posts)
 
-        return render_template('index.html', posts=blog_posts)
+        #return render_template('index.html', posts=blog_posts)
+        return redirect(url_for('index'))
 
     except Exception as error:
         print(f"Error deleting blog post data: {error}")
